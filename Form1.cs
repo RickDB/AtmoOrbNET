@@ -44,7 +44,7 @@ namespace AtmoOrbApp
       }
       catch (Exception e)
       {
-        MessageBox.Show("Error during ORB connection: {0}", e.Message);
+        MessageBox.Show($"Error during ORB connection: {e.Message}");
       }
     }
 
