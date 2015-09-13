@@ -28,24 +28,26 @@
     /// </summary>
     private void InitializeComponent()
     {
+      this.components = new System.ComponentModel.Container();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
       this.lblRed = new System.Windows.Forms.Label();
       this.lblBlue = new System.Windows.Forms.Label();
       this.lblGreen = new System.Windows.Forms.Label();
       this.lblOrbMulticastIP = new System.Windows.Forms.Label();
       this.lblOrbPort = new System.Windows.Forms.Label();
-      this.lblRedValue = new System.Windows.Forms.Label();
-      this.lblGreenValue = new System.Windows.Forms.Label();
-      this.lblBlueValue = new System.Windows.Forms.Label();
       this.btnTurnOffOrbs = new System.Windows.Forms.Button();
       this.lblOrbID = new System.Windows.Forms.Label();
+      this.cbOrbSendToAll = new System.Windows.Forms.CheckBox();
+      this.tooltip = new System.Windows.Forms.ToolTip(this.components);
       this.tbOrbID = new System.Windows.Forms.TextBox();
+      this.lblBlueValue = new System.Windows.Forms.Label();
+      this.lblGreenValue = new System.Windows.Forms.Label();
+      this.lblRedValue = new System.Windows.Forms.Label();
       this.tbOrbPort = new System.Windows.Forms.TextBox();
       this.tbOrbIP = new System.Windows.Forms.TextBox();
       this.trackbarGreen = new System.Windows.Forms.TrackBar();
       this.trackbarBlue = new System.Windows.Forms.TrackBar();
       this.trackbarRed = new System.Windows.Forms.TrackBar();
-      this.cbOrbSendToAll = new System.Windows.Forms.CheckBox();
       ((System.ComponentModel.ISupportInitialize)(this.trackbarGreen)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.trackbarBlue)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.trackbarRed)).BeginInit();
@@ -56,7 +58,7 @@
       this.lblRed.AutoSize = true;
       this.lblRed.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lblRed.ForeColor = System.Drawing.Color.Red;
-      this.lblRed.Location = new System.Drawing.Point(38, 124);
+      this.lblRed.Location = new System.Drawing.Point(38, 164);
       this.lblRed.Name = "lblRed";
       this.lblRed.Size = new System.Drawing.Size(40, 17);
       this.lblRed.TabIndex = 3;
@@ -67,7 +69,7 @@
       this.lblBlue.AutoSize = true;
       this.lblBlue.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lblBlue.ForeColor = System.Drawing.Color.Blue;
-      this.lblBlue.Location = new System.Drawing.Point(38, 258);
+      this.lblBlue.Location = new System.Drawing.Point(38, 298);
       this.lblBlue.Name = "lblBlue";
       this.lblBlue.Size = new System.Drawing.Size(48, 17);
       this.lblBlue.TabIndex = 4;
@@ -78,7 +80,7 @@
       this.lblGreen.AutoSize = true;
       this.lblGreen.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lblGreen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-      this.lblGreen.Location = new System.Drawing.Point(38, 195);
+      this.lblGreen.Location = new System.Drawing.Point(38, 235);
       this.lblGreen.Name = "lblGreen";
       this.lblGreen.Size = new System.Drawing.Size(62, 17);
       this.lblGreen.TabIndex = 5;
@@ -102,33 +104,6 @@
       this.lblOrbPort.TabIndex = 9;
       this.lblOrbPort.Text = "Orb Port";
       // 
-      // lblRedValue
-      // 
-      this.lblRedValue.AutoSize = true;
-      this.lblRedValue.Location = new System.Drawing.Point(41, 141);
-      this.lblRedValue.Name = "lblRedValue";
-      this.lblRedValue.Size = new System.Drawing.Size(13, 13);
-      this.lblRedValue.TabIndex = 10;
-      this.lblRedValue.Text = "0";
-      // 
-      // lblGreenValue
-      // 
-      this.lblGreenValue.AutoSize = true;
-      this.lblGreenValue.Location = new System.Drawing.Point(41, 212);
-      this.lblGreenValue.Name = "lblGreenValue";
-      this.lblGreenValue.Size = new System.Drawing.Size(13, 13);
-      this.lblGreenValue.TabIndex = 11;
-      this.lblGreenValue.Text = "0";
-      // 
-      // lblBlueValue
-      // 
-      this.lblBlueValue.AutoSize = true;
-      this.lblBlueValue.Location = new System.Drawing.Point(41, 275);
-      this.lblBlueValue.Name = "lblBlueValue";
-      this.lblBlueValue.Size = new System.Drawing.Size(13, 13);
-      this.lblBlueValue.TabIndex = 12;
-      this.lblBlueValue.Text = "0";
-      // 
       // btnTurnOffOrbs
       // 
       this.btnTurnOffOrbs.Location = new System.Drawing.Point(480, 29);
@@ -148,23 +123,61 @@
       this.lblOrbID.TabIndex = 15;
       this.lblOrbID.Text = "Orb ID";
       // 
+      // cbOrbSendToAll
+      // 
+      this.cbOrbSendToAll.AutoSize = true;
+      this.cbOrbSendToAll.Location = new System.Drawing.Point(34, 124);
+      this.cbOrbSendToAll.Name = "cbOrbSendToAll";
+      this.cbOrbSendToAll.Size = new System.Drawing.Size(186, 17);
+      this.cbOrbSendToAll.TabIndex = 16;
+      this.cbOrbSendToAll.Text = "Send to all Orbs in multicast range";
+      this.cbOrbSendToAll.UseVisualStyleBackColor = true;
+      this.cbOrbSendToAll.CheckedChanged += new System.EventHandler(this.cbOrbSendToAll_CheckedChanged);
+      this.cbOrbSendToAll.MouseHover += new System.EventHandler(this.cbOrbSendToAll_MouseHover);
+      // 
       // tbOrbID
       // 
       this.tbOrbID.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AtmoOrbApp.Properties.Settings.Default, "OrbID", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
       this.tbOrbID.Location = new System.Drawing.Point(143, 89);
       this.tbOrbID.Name = "tbOrbID";
-      this.tbOrbID.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
       this.tbOrbID.Size = new System.Drawing.Size(77, 20);
       this.tbOrbID.TabIndex = 14;
       this.tbOrbID.Text = global::AtmoOrbApp.Properties.Settings.Default.OrbID;
+      this.tbOrbID.MouseHover += new System.EventHandler(this.tbOrbID_MouseHover);
       this.tbOrbID.Validating += new System.ComponentModel.CancelEventHandler(this.tbOrbID_Validating);
+      // 
+      // lblBlueValue
+      // 
+      this.lblBlueValue.AutoSize = true;
+      this.lblBlueValue.Location = new System.Drawing.Point(41, 315);
+      this.lblBlueValue.Name = "lblBlueValue";
+      this.lblBlueValue.Size = new System.Drawing.Size(13, 13);
+      this.lblBlueValue.TabIndex = 12;
+      this.lblBlueValue.Text = "0";
+      // 
+      // lblGreenValue
+      // 
+      this.lblGreenValue.AutoSize = true;
+      this.lblGreenValue.Location = new System.Drawing.Point(41, 252);
+      this.lblGreenValue.Name = "lblGreenValue";
+      this.lblGreenValue.Size = new System.Drawing.Size(13, 13);
+      this.lblGreenValue.TabIndex = 11;
+      this.lblGreenValue.Text = "0";
+      // 
+      // lblRedValue
+      // 
+      this.lblRedValue.AutoSize = true;
+      this.lblRedValue.Location = new System.Drawing.Point(41, 181);
+      this.lblRedValue.Name = "lblRedValue";
+      this.lblRedValue.Size = new System.Drawing.Size(13, 13);
+      this.lblRedValue.TabIndex = 10;
+      this.lblRedValue.Text = "0";
       // 
       // tbOrbPort
       // 
       this.tbOrbPort.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AtmoOrbApp.Properties.Settings.Default, "OrbPort", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
       this.tbOrbPort.Location = new System.Drawing.Point(143, 54);
       this.tbOrbPort.Name = "tbOrbPort";
-      this.tbOrbPort.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
       this.tbOrbPort.Size = new System.Drawing.Size(77, 20);
       this.tbOrbPort.TabIndex = 7;
       this.tbOrbPort.Text = global::AtmoOrbApp.Properties.Settings.Default.OrbPort;
@@ -175,7 +188,6 @@
       this.tbOrbIP.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AtmoOrbApp.Properties.Settings.Default, "OrbIP", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
       this.tbOrbIP.Location = new System.Drawing.Point(143, 16);
       this.tbOrbIP.Name = "tbOrbIP";
-      this.tbOrbIP.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
       this.tbOrbIP.Size = new System.Drawing.Size(77, 20);
       this.tbOrbIP.TabIndex = 6;
       this.tbOrbIP.Text = global::AtmoOrbApp.Properties.Settings.Default.OrbIP;
@@ -184,7 +196,7 @@
       // trackbarGreen
       // 
       this.trackbarGreen.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::AtmoOrbApp.Properties.Settings.Default, "GreenValue", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-      this.trackbarGreen.Location = new System.Drawing.Point(120, 195);
+      this.trackbarGreen.Location = new System.Drawing.Point(120, 235);
       this.trackbarGreen.Maximum = 255;
       this.trackbarGreen.Name = "trackbarGreen";
       this.trackbarGreen.Size = new System.Drawing.Size(477, 45);
@@ -196,7 +208,7 @@
       // trackbarBlue
       // 
       this.trackbarBlue.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::AtmoOrbApp.Properties.Settings.Default, "BlueValue", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-      this.trackbarBlue.Location = new System.Drawing.Point(120, 258);
+      this.trackbarBlue.Location = new System.Drawing.Point(120, 298);
       this.trackbarBlue.Maximum = 255;
       this.trackbarBlue.Name = "trackbarBlue";
       this.trackbarBlue.Size = new System.Drawing.Size(477, 45);
@@ -208,7 +220,7 @@
       // trackbarRed
       // 
       this.trackbarRed.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::AtmoOrbApp.Properties.Settings.Default, "RedValue", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-      this.trackbarRed.Location = new System.Drawing.Point(120, 124);
+      this.trackbarRed.Location = new System.Drawing.Point(120, 164);
       this.trackbarRed.Maximum = 255;
       this.trackbarRed.Name = "trackbarRed";
       this.trackbarRed.Size = new System.Drawing.Size(477, 45);
@@ -217,22 +229,11 @@
       this.trackbarRed.Value = global::AtmoOrbApp.Properties.Settings.Default.RedValue;
       this.trackbarRed.Scroll += new System.EventHandler(this.trackbarRed_Scroll);
       // 
-      // cbOrbSendToAll
-      // 
-      this.cbOrbSendToAll.AutoSize = true;
-      this.cbOrbSendToAll.Location = new System.Drawing.Point(227, 91);
-      this.cbOrbSendToAll.Name = "cbOrbSendToAll";
-      this.cbOrbSendToAll.Size = new System.Drawing.Size(186, 17);
-      this.cbOrbSendToAll.TabIndex = 16;
-      this.cbOrbSendToAll.Text = "Send to all Orbs in multicast range";
-      this.cbOrbSendToAll.UseVisualStyleBackColor = true;
-      this.cbOrbSendToAll.CheckedChanged += new System.EventHandler(this.cbOrbSendToAll_CheckedChanged);
-      // 
       // Form1
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(609, 330);
+      this.ClientSize = new System.Drawing.Size(609, 355);
       this.Controls.Add(this.cbOrbSendToAll);
       this.Controls.Add(this.lblOrbID);
       this.Controls.Add(this.tbOrbID);
@@ -284,6 +285,7 @@
     private System.Windows.Forms.Label lblOrbID;
     private System.Windows.Forms.TextBox tbOrbID;
     private System.Windows.Forms.CheckBox cbOrbSendToAll;
+    private System.Windows.Forms.ToolTip tooltip;
   }
 }
 

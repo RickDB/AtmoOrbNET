@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net;
 using System.Net.Sockets;
@@ -21,6 +22,7 @@ namespace AtmoOrbApp
     {
       InitializeComponent();
       Connect();
+      LoadSettings();
     }
 
     public void Connect()
@@ -69,44 +71,62 @@ namespace AtmoOrbApp
         return;
       }
 
+      List<string> listOrbIds = new List<string>();
+      listOrbIds.Add(tbOrbID.Text);
+
+      if (tbOrbID.Text.Contains(","))
+      {
+        listOrbIds.Clear();
+
+        string[] Orbs = tbOrbID.Text.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+
+        foreach (var item in Orbs)
+        {
+          listOrbIds.Add(item);
+        }
+      }
+
       try
       {
-        byte commandCount = 24;
-        byte[] bytes = new byte[3 + commandCount * 3];
-
-        // Command identifier: C0FFEE
-        bytes[0] = 0xC0;
-        bytes[1] = 0xFF;
-        bytes[2] = 0xEE;
-
-        // Options parameter: 1 = force off | 2 = validate command by Orb ID
-        if (forceLightsOff)
+        foreach (var orbID in listOrbIds)
         {
-          bytes[3] = 1;
-        }
-        else
-        {
-          if (cbOrbSendToAll.Checked)
+          byte commandCount = 24;
+          byte[] bytes = new byte[3 + commandCount*3];
+
+          // Command identifier: C0FFEE
+          bytes[0] = 0xC0;
+          bytes[1] = 0xFF;
+          bytes[2] = 0xEE;
+
+          // Options parameter: 1 = force off | 2 = validate command by Orb ID
+          if (forceLightsOff)
           {
-            // Send to all Orbs
-            bytes[3] = 0;
+            bytes[3] = 1;
           }
           else
           {
-            // Validate by Orb ID
-            bytes[3] = 2;
+            if (cbOrbSendToAll.Checked)
+            {
+              // Send to all Orbs
+              bytes[3] = 0;
+            }
+            else
+            {
+              // Validate by Orb ID
+              bytes[3] = 2;
+            }
           }
+
+          // Orb ID
+          bytes[4] = byte.Parse(orbID);
+
+          // RED / GREEN / BLUE
+          bytes[5] = red;
+          bytes[6] = green;
+          bytes[7] = blue;
+
+          _socket.Send(bytes, bytes.Length, SocketFlags.None);
         }
-
-        // Orb ID
-        bytes[4] = byte.Parse(tbOrbID.Text);
-
-        // RED / GREEN / BLUE
-        bytes[5] = red;
-        bytes[6] = green;
-        bytes[7] = blue;
-
-        _socket.Send(bytes, bytes.Length, SocketFlags.None);
       }
       catch (Exception e)
       {
@@ -117,6 +137,17 @@ namespace AtmoOrbApp
     public void SaveSettings()
     {
       Settings.Default.Save();
+    }
+
+    public void LoadSettings()
+    {
+      lblRedValue.Text = Settings.Default.RedValue.ToString();
+      lblGreenValue.Text = Settings.Default.GreenValue.ToString();
+      lblBlueValue.Text = Settings.Default.BlueValue.ToString();
+
+      _red = byte.Parse(trackbarRed.Value.ToString());
+      _green = byte.Parse(trackbarGreen.Value.ToString());
+      _blue = byte.Parse(trackbarBlue.Value.ToString());
     }
 
     private void trackbarRed_Scroll(object sender, EventArgs e)
@@ -161,6 +192,26 @@ namespace AtmoOrbApp
       SaveSettings();
     }
 
+    private void cbOrbSendToAll_CheckedChanged(object sender, EventArgs e)
+    {
+      tbOrbID.ReadOnly = cbOrbSendToAll.Checked;
+
+      if (tbOrbID.ReadOnly)
+      {
+        tbOrbID.Text = @"0";
+      }
+    }
+
+    private void tbOrbID_MouseHover(object sender, EventArgs e)
+    {
+      tooltip.SetToolTip(tbOrbID, "For multiple IDs at once separate them with a comma");
+    }
+
+    private void cbOrbSendToAll_MouseHover(object sender, EventArgs e)
+    {
+      tooltip.SetToolTip(cbOrbSendToAll, "Will send to all devices currently within selected the Multicast IP");
+    }
+
     private void Form1_FormClosing(object sender, FormClosingEventArgs e)
     {
       SaveSettings();
@@ -169,16 +220,6 @@ namespace AtmoOrbApp
     private void btnTurnOffOrbs_Click(object sender, EventArgs e)
     {
       ChangeColor(0, 0, 0, true);
-    }
-
-    private void cbOrbSendToAll_CheckedChanged(object sender, EventArgs e)
-    {
-      tbOrbID.ReadOnly = cbOrbSendToAll.Checked;
-
-      if (tbOrbID.ReadOnly)
-      {
-        tbOrbID.Text = "0";
-      }
     }
   }
 }
