@@ -155,6 +155,12 @@ namespace AtmoOrbApp
       SaveSettings();
     }
 
+    private void tbOrbID_Validating(object sender, CancelEventArgs e)
+    {
+      Reconnect();
+      SaveSettings();
+    }
+
     private void Form1_FormClosing(object sender, FormClosingEventArgs e)
     {
       SaveSettings();

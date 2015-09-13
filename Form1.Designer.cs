@@ -135,7 +135,7 @@
       this.btnTurnOffOrbs.Name = "btnTurnOffOrbs";
       this.btnTurnOffOrbs.Size = new System.Drawing.Size(107, 68);
       this.btnTurnOffOrbs.TabIndex = 13;
-      this.btnTurnOffOrbs.Text = "Turn off all Orbs";
+      this.btnTurnOffOrbs.Text = "Turn off Orbs";
       this.btnTurnOffOrbs.UseVisualStyleBackColor = true;
       this.btnTurnOffOrbs.Click += new System.EventHandler(this.btnTurnOffOrbs_Click);
       // 
@@ -157,6 +157,7 @@
       this.tbOrbID.Size = new System.Drawing.Size(77, 20);
       this.tbOrbID.TabIndex = 14;
       this.tbOrbID.Text = global::AtmoOrbApp.Properties.Settings.Default.OrbID;
+      this.tbOrbID.Validating += new System.ComponentModel.CancelEventHandler(this.tbOrbID_Validating);
       // 
       // tbOrbPort
       // 
@@ -249,7 +250,10 @@
       this.Controls.Add(this.trackbarGreen);
       this.Controls.Add(this.trackbarBlue);
       this.Controls.Add(this.trackbarRed);
+      this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+      this.MaximizeBox = false;
+      this.MinimizeBox = false;
       this.Name = "Form1";
       this.Text = "AtmoOrb - Color control";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
