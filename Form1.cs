@@ -96,9 +96,10 @@ namespace AtmoOrbApp
             // Validate by Orb ID
             bytes[3] = 2;
           }
-
-          bytes[4] = byte.Parse(tbOrbID.Text);
         }
+
+        // Orb ID
+        bytes[4] = byte.Parse(tbOrbID.Text);
 
         // RED / GREEN / BLUE
         bytes[5] = red;
@@ -167,6 +168,11 @@ namespace AtmoOrbApp
     private void cbOrbSendToAll_CheckedChanged(object sender, EventArgs e)
     {
       tbOrbID.ReadOnly = cbOrbSendToAll.Checked;
+
+      if (tbOrbID.ReadOnly)
+      {
+        tbOrbID.Text = "0";
+      }
     }
   }
 }
