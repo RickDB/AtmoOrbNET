@@ -39,10 +39,10 @@
       this.lblOrbID = new System.Windows.Forms.Label();
       this.cbOrbSendToAll = new System.Windows.Forms.CheckBox();
       this.tooltip = new System.Windows.Forms.ToolTip(this.components);
-      this.tbOrbID = new System.Windows.Forms.TextBox();
       this.lblBlueValue = new System.Windows.Forms.Label();
       this.lblGreenValue = new System.Windows.Forms.Label();
       this.lblRedValue = new System.Windows.Forms.Label();
+      this.tbOrbID = new System.Windows.Forms.TextBox();
       this.tbOrbPort = new System.Windows.Forms.TextBox();
       this.tbOrbIP = new System.Windows.Forms.TextBox();
       this.trackbarGreen = new System.Windows.Forms.TrackBar();
@@ -126,7 +126,7 @@
       // cbOrbSendToAll
       // 
       this.cbOrbSendToAll.AutoSize = true;
-      this.cbOrbSendToAll.Location = new System.Drawing.Point(34, 124);
+      this.cbOrbSendToAll.Location = new System.Drawing.Point(41, 124);
       this.cbOrbSendToAll.Name = "cbOrbSendToAll";
       this.cbOrbSendToAll.Size = new System.Drawing.Size(186, 17);
       this.cbOrbSendToAll.TabIndex = 16;
@@ -134,17 +134,6 @@
       this.cbOrbSendToAll.UseVisualStyleBackColor = true;
       this.cbOrbSendToAll.CheckedChanged += new System.EventHandler(this.cbOrbSendToAll_CheckedChanged);
       this.cbOrbSendToAll.MouseHover += new System.EventHandler(this.cbOrbSendToAll_MouseHover);
-      // 
-      // tbOrbID
-      // 
-      this.tbOrbID.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AtmoOrbApp.Properties.Settings.Default, "OrbID", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-      this.tbOrbID.Location = new System.Drawing.Point(143, 89);
-      this.tbOrbID.Name = "tbOrbID";
-      this.tbOrbID.Size = new System.Drawing.Size(77, 20);
-      this.tbOrbID.TabIndex = 14;
-      this.tbOrbID.Text = global::AtmoOrbApp.Properties.Settings.Default.OrbID;
-      this.tbOrbID.MouseHover += new System.EventHandler(this.tbOrbID_MouseHover);
-      this.tbOrbID.Validating += new System.ComponentModel.CancelEventHandler(this.tbOrbID_Validating);
       // 
       // lblBlueValue
       // 
@@ -172,6 +161,17 @@
       this.lblRedValue.Size = new System.Drawing.Size(13, 13);
       this.lblRedValue.TabIndex = 10;
       this.lblRedValue.Text = "0";
+      // 
+      // tbOrbID
+      // 
+      this.tbOrbID.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AtmoOrbApp.Properties.Settings.Default, "OrbID", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+      this.tbOrbID.Location = new System.Drawing.Point(143, 89);
+      this.tbOrbID.Name = "tbOrbID";
+      this.tbOrbID.Size = new System.Drawing.Size(77, 20);
+      this.tbOrbID.TabIndex = 14;
+      this.tbOrbID.Text = global::AtmoOrbApp.Properties.Settings.Default.OrbID;
+      this.tbOrbID.MouseHover += new System.EventHandler(this.tbOrbID_MouseHover);
+      this.tbOrbID.Validating += new System.ComponentModel.CancelEventHandler(this.tbOrbID_Validating);
       // 
       // tbOrbPort
       // 
