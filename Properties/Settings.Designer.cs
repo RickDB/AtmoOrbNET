@@ -82,5 +82,17 @@ namespace AtmoOrbApp.Properties {
                 this["BlueValue"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public string OrbID {
+            get {
+                return ((string)(this["OrbID"]));
+            }
+            set {
+                this["OrbID"] = value;
+            }
+        }
     }
 }

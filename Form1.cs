@@ -71,28 +71,39 @@ namespace AtmoOrbApp
 
       try
       {
-        const byte commandCount = 24;
-        var bytes = new byte[3 + commandCount*3];
+        byte commandCount = 24;
+        byte[] bytes = new byte[3 + commandCount * 3];
 
         // Command identifier: C0FFEE
         bytes[0] = 0xC0;
         bytes[1] = 0xFF;
         bytes[2] = 0xEE;
 
-        // Options parameter, force leds off = 1
+        // Options parameter: 1 = force off | 2 = validate command by Orb ID
         if (forceLightsOff)
         {
           bytes[3] = 1;
         }
         else
         {
-          bytes[3] = 0;
+          if (cbOrbSendToAll.Checked)
+          {
+            // Send to all Orbs
+            bytes[3] = 0;
+          }
+          else
+          {
+            // Validate by Orb ID
+            bytes[3] = 2;
+          }
+
+          bytes[4] = byte.Parse(tbOrbID.Text);
         }
 
         // RED / GREEN / BLUE
-        bytes[4] = red;
-        bytes[5] = green;
-        bytes[6] = blue;
+        bytes[5] = red;
+        bytes[6] = green;
+        bytes[7] = blue;
 
         _socket.Send(bytes, bytes.Length, SocketFlags.None);
       }
@@ -151,6 +162,11 @@ namespace AtmoOrbApp
     private void btnTurnOffOrbs_Click(object sender, EventArgs e)
     {
       ChangeColor(0, 0, 0, true);
+    }
+
+    private void cbOrbSendToAll_CheckedChanged(object sender, EventArgs e)
+    {
+      tbOrbID.ReadOnly = cbOrbSendToAll.Checked;
     }
   }
 }
