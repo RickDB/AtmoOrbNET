@@ -91,7 +91,7 @@ namespace AtmoOrbApp
         foreach (var orbID in listOrbIds)
         {
           byte commandCount = 24;
-          byte[] bytes = new byte[3 + commandCount*3];
+          byte[] bytes = new byte[5 + commandCount*3];
 
           // Command identifier: C0FFEE
           bytes[0] = 0xC0;
