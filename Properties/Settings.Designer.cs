@@ -25,7 +25,7 @@ namespace AtmoOrbApp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("224.15.18.2")]
+        [global::System.Configuration.DefaultSettingValueAttribute("239.15.18.2")]
         public string OrbIP {
             get {
                 return ((string)(this["OrbIP"]));

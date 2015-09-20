@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="OrbIP" Type="System.String" Scope="User">
-      <Value Profile="(Default)">224.15.18.2</Value>
+      <Value Profile="(Default)">239.15.18.2</Value>
     </Setting>
     <Setting Name="OrbPort" Type="System.String" Scope="User">
       <Value Profile="(Default)">49692</Value>
