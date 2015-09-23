@@ -20,5 +20,8 @@
     <Setting Name="OrbID" Type="System.String" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
+    <Setting Name="OrbLedCount" Type="System.String" Scope="User">
+      <Value Profile="(Default)">24</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

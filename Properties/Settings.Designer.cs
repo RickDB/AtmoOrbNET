@@ -94,5 +94,17 @@ namespace AtmoOrbApp.Properties {
                 this["OrbID"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("24")]
+        public string OrbLedCount {
+            get {
+                return ((string)(this["OrbLedCount"]));
+            }
+            set {
+                this["OrbLedCount"] = value;
+            }
+        }
     }
 }

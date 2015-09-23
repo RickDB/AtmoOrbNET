@@ -17,6 +17,7 @@ namespace AtmoOrbApp
     private byte _red;
     private byte _green;
     private byte _blue;
+    private byte _ledCount;
 
     public Form1()
     {
@@ -90,8 +91,7 @@ namespace AtmoOrbApp
       {
         foreach (var orbID in listOrbIds)
         {
-          byte commandCount = 24;
-          byte[] bytes = new byte[5 + commandCount*3];
+          byte[] bytes = new byte[5 + _ledCount * 3];
 
           // Command identifier: C0FFEE
           bytes[0] = 0xC0;
@@ -144,6 +144,7 @@ namespace AtmoOrbApp
       lblRedValue.Text = Settings.Default.RedValue.ToString();
       lblGreenValue.Text = Settings.Default.GreenValue.ToString();
       lblBlueValue.Text = Settings.Default.BlueValue.ToString();
+      _ledCount = byte.Parse(tbOrbLedCount.Text);
 
       _red = byte.Parse(trackbarRed.Value.ToString());
       _green = byte.Parse(trackbarGreen.Value.ToString());
@@ -201,6 +202,11 @@ namespace AtmoOrbApp
         tbOrbID.Text = @"0";
       }
     }
+    private void tbOrbLedCount_Validating(object sender, CancelEventArgs e)
+    {
+      _ledCount = byte.Parse(tbOrbLedCount.Text);
+      SaveSettings();
+    }
 
     private void tbOrbID_MouseHover(object sender, EventArgs e)
     {
@@ -221,5 +227,6 @@ namespace AtmoOrbApp
     {
       ChangeColor(0, 0, 0, true);
     }
+
   }
 }
