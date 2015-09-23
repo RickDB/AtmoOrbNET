@@ -91,7 +91,7 @@
       // lblOrbMulticastIP
       // 
       this.lblOrbMulticastIP.AutoSize = true;
-      this.lblOrbMulticastIP.Location = new System.Drawing.Point(38, 19);
+      this.lblOrbMulticastIP.Location = new System.Drawing.Point(38, 18);
       this.lblOrbMulticastIP.Name = "lblOrbMulticastIP";
       this.lblOrbMulticastIP.Size = new System.Drawing.Size(85, 13);
       this.lblOrbMulticastIP.TabIndex = 8;
@@ -100,7 +100,7 @@
       // lblOrbPort
       // 
       this.lblOrbPort.AutoSize = true;
-      this.lblOrbPort.Location = new System.Drawing.Point(38, 51);
+      this.lblOrbPort.Location = new System.Drawing.Point(38, 48);
       this.lblOrbPort.Name = "lblOrbPort";
       this.lblOrbPort.Size = new System.Drawing.Size(49, 13);
       this.lblOrbPort.TabIndex = 9;
@@ -119,7 +119,7 @@
       // lblOrbID
       // 
       this.lblOrbID.AutoSize = true;
-      this.lblOrbID.Location = new System.Drawing.Point(38, 110);
+      this.lblOrbID.Location = new System.Drawing.Point(38, 78);
       this.lblOrbID.Name = "lblOrbID";
       this.lblOrbID.Size = new System.Drawing.Size(38, 13);
       this.lblOrbID.TabIndex = 15;
@@ -167,7 +167,7 @@
       // lblOrbLedCount
       // 
       this.lblOrbLedCount.AutoSize = true;
-      this.lblOrbLedCount.Location = new System.Drawing.Point(38, 82);
+      this.lblOrbLedCount.Location = new System.Drawing.Point(38, 108);
       this.lblOrbLedCount.Name = "lblOrbLedCount";
       this.lblOrbLedCount.Size = new System.Drawing.Size(61, 13);
       this.lblOrbLedCount.TabIndex = 18;
@@ -176,17 +176,18 @@
       // tbOrbLedCount
       // 
       this.tbOrbLedCount.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AtmoOrbApp.Properties.Settings.Default, "OrbLedCount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-      this.tbOrbLedCount.Location = new System.Drawing.Point(143, 79);
+      this.tbOrbLedCount.Location = new System.Drawing.Point(143, 105);
       this.tbOrbLedCount.Name = "tbOrbLedCount";
       this.tbOrbLedCount.Size = new System.Drawing.Size(77, 20);
       this.tbOrbLedCount.TabIndex = 17;
       this.tbOrbLedCount.Text = global::AtmoOrbApp.Properties.Settings.Default.OrbLedCount;
+      this.tbOrbLedCount.MouseHover += new System.EventHandler(this.tbOrbLedCount_MouseHover);
       this.tbOrbLedCount.Validating += new System.ComponentModel.CancelEventHandler(this.tbOrbLedCount_Validating);
       // 
       // tbOrbID
       // 
       this.tbOrbID.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AtmoOrbApp.Properties.Settings.Default, "OrbID", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-      this.tbOrbID.Location = new System.Drawing.Point(143, 107);
+      this.tbOrbID.Location = new System.Drawing.Point(143, 75);
       this.tbOrbID.Name = "tbOrbID";
       this.tbOrbID.Size = new System.Drawing.Size(77, 20);
       this.tbOrbID.TabIndex = 14;
@@ -197,7 +198,7 @@
       // tbOrbPort
       // 
       this.tbOrbPort.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AtmoOrbApp.Properties.Settings.Default, "OrbPort", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-      this.tbOrbPort.Location = new System.Drawing.Point(143, 48);
+      this.tbOrbPort.Location = new System.Drawing.Point(143, 45);
       this.tbOrbPort.Name = "tbOrbPort";
       this.tbOrbPort.Size = new System.Drawing.Size(77, 20);
       this.tbOrbPort.TabIndex = 7;
@@ -207,7 +208,7 @@
       // tbOrbIP
       // 
       this.tbOrbIP.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::AtmoOrbApp.Properties.Settings.Default, "OrbIP", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-      this.tbOrbIP.Location = new System.Drawing.Point(143, 16);
+      this.tbOrbIP.Location = new System.Drawing.Point(143, 15);
       this.tbOrbIP.Name = "tbOrbIP";
       this.tbOrbIP.Size = new System.Drawing.Size(77, 20);
       this.tbOrbIP.TabIndex = 6;

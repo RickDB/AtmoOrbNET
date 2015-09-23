@@ -228,5 +228,9 @@ namespace AtmoOrbApp
       ChangeColor(0, 0, 0, true);
     }
 
+    private void tbOrbLedCount_MouseHover(object sender, EventArgs e)
+    {
+      tooltip.SetToolTip(tbOrbLedCount, "Optional and in most cases 24 is be the recommend value");
+    }
   }
 }
