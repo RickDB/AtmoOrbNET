@@ -121,9 +121,9 @@
       this.lblOrbID.AutoSize = true;
       this.lblOrbID.Location = new System.Drawing.Point(38, 78);
       this.lblOrbID.Name = "lblOrbID";
-      this.lblOrbID.Size = new System.Drawing.Size(38, 13);
+      this.lblOrbID.Size = new System.Drawing.Size(41, 13);
       this.lblOrbID.TabIndex = 15;
-      this.lblOrbID.Text = "Orb ID";
+      this.lblOrbID.Text = "Orb ID:";
       // 
       // cbOrbSendToAll
       // 
