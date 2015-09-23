@@ -169,9 +169,9 @@
       this.lblOrbLedCount.AutoSize = true;
       this.lblOrbLedCount.Location = new System.Drawing.Point(38, 82);
       this.lblOrbLedCount.Name = "lblOrbLedCount";
-      this.lblOrbLedCount.Size = new System.Drawing.Size(58, 13);
+      this.lblOrbLedCount.Size = new System.Drawing.Size(61, 13);
       this.lblOrbLedCount.TabIndex = 18;
-      this.lblOrbLedCount.Text = "Led count:";
+      this.lblOrbLedCount.Text = "LED count:";
       // 
       // tbOrbLedCount
       // 
